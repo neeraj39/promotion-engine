@@ -29,7 +29,7 @@ public class ProductSKUPrice {
 		productSKUPrice.put("B", 25);
 		productSKUPrice.put("C", 20);
 		productSKUPrice.put("D", 20);
-		productSKUPrice.put("E", 20);
+		productSKUPrice.put("E", 10);
 	}
 
 

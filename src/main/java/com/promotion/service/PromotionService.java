@@ -99,17 +99,22 @@ public class PromotionService {
 				int quantityItemA = product.getQuantity();
 				Optional<IncomingCheckoutProduct> nextProduct = checkOutProducts.stream()
 						.filter(p -> p.getProductSKU().equals(itemB.toString())).findFirst();
-				int quantityItemB = nextProduct.get().getQuantity();
-				while (quantityItemA != 0 && quantityItemB != 0) {
-					quantityItemA--;
-					quantityItemB--;
-					sum += Integer.parseInt(promotionForSKU.substring(4));
-				}
-				if (quantityItemA > 0) {
+				if(nextProduct.isPresent()) {
+					int quantityItemB = nextProduct.get().getQuantity();
+					while (quantityItemA != 0 && quantityItemB != 0) {
+						quantityItemA--;
+						quantityItemB--;
+						sum += Integer.parseInt(promotionForSKU.substring(4));
+					}
+					if (quantityItemA > 0) {
+						sum += quantityItemA * productSKUPrice.getProductSKUPrice().get(itemA.toString());
+					} else if (quantityItemB > 0) {
+						sum += quantityItemB * productSKUPrice.getProductSKUPrice().get(itemB.toString());
+					}
+				} else {
 					sum += quantityItemA * productSKUPrice.getProductSKUPrice().get(itemA.toString());
-				} else if (quantityItemB > 0) {
-					sum += quantityItemB * productSKUPrice.getProductSKUPrice().get(itemB.toString());
 				}
+				
 
 			}
 		}
