@@ -114,7 +114,8 @@ public class PromotionService {
 				} else {
 					sum += quantityItemA * productSKUPrice.getProductSKUPrice().get(itemA.toString());
 				}
-				
+				break;
+			case '%':
 
 			}
 		}
