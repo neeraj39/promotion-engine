@@ -60,6 +60,10 @@ class PromotionServiceTest {
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuC() {
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("C",3));
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("D",4));
+		int sum = PromotionService.processCheckout(incomingCheckoutProducts);
+		Assertions.assertEquals(sum, 80);
 	}
 	
 	@Test
