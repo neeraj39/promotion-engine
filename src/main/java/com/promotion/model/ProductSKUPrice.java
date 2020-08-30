@@ -1,5 +1,6 @@
 package com.promotion.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -23,7 +24,24 @@ public class ProductSKUPrice {
 	
 	
 	public ProductSKUPrice() {
+		productSKUPrice = new HashMap<>();
 		productSKUPrice.put("A", 20);
+		productSKUPrice.put("B", 20);
+		productSKUPrice.put("C", 20);
+		productSKUPrice.put("D", 20);
+		productSKUPrice.put("E", 20);
+	}
+
+
+
+	public Map<String, Integer> getProductSKUPrice() {
+		return productSKUPrice;
+	}
+
+
+
+	public void setProductSKUPrice(Map<String, Integer> productSKUPrice) {
+		this.productSKUPrice = productSKUPrice;
 	}
 
 

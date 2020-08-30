@@ -2,38 +2,62 @@ package com.promotion.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+
+import com.promotion.model.IncomingCheckoutProduct;
+import com.promotion.model.ProductSKUPrice;
+import com.promotion.model.PromotionRules;
 
 class PromotionServiceTest {
+	
+	ProductSKUPrice productSKUPrice;
+	
+	PromotionRules promotionRules;
+	
+	List<IncomingCheckoutProduct> incomingCheckoutProducts = new ArrayList<>();
+	
+	PromotionService PromotionService ;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		 
+		 PromotionService =  new PromotionService();
 	}
 
 	@Test
 	void testShouldCalculatepromotionTotalForSkuA() {
-		fail("Not yet implemented");
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("A",4));
+		int sum = PromotionService.processCheckout(incomingCheckoutProducts);
+		Assertions.assertEquals(sum, 150);
+	}
+	
+	@Test
+	void testShouldCalculateTotalForSkuAwithoutAddingPromotion() {
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("A",1));
+		int sum = PromotionService.processCheckout(incomingCheckoutProducts);
+		Assertions.assertEquals(sum, 20);
 	}
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuB() {
-		fail("Not yet implemented");
 	}
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuC() {
-		fail("Not yet implemented");
 	}
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuAAndSkuB() {
-		fail("Not yet implemented");
 	}
 	
 	@Test
 	void testShouldNotCalculatepromotionTotalForSkuE() {
-		fail("Not yet implemented");
 	}
 
 }
