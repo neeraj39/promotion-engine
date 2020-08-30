@@ -46,14 +46,20 @@ class PromotionServiceTest {
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuB() {
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("B",3));
+		int sum = PromotionService.processCheckout(incomingCheckoutProducts);
+		Assertions.assertEquals(sum, 55);
+	}
+	@Test
+	void testShouldCalculatepromotionTotalForSkuBAndSkuA() {
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("B",3));
+		incomingCheckoutProducts.add(new IncomingCheckoutProduct("A",4));
+		int sum = PromotionService.processCheckout(incomingCheckoutProducts);
+		Assertions.assertEquals(sum, 205);
 	}
 	
 	@Test
 	void testShouldCalculatepromotionTotalForSkuC() {
-	}
-	
-	@Test
-	void testShouldCalculatepromotionTotalForSkuAAndSkuB() {
 	}
 	
 	@Test
